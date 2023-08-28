@@ -1,17 +1,17 @@
 package com.uco.banco.app;
 
+import com.uco.banco.dominio.Banco;
 import com.uco.banco.dominio.CuentaBancaria;
-import com.uco.banco.dominio.Persona;
 
 public class AppBanco {
     public static void main(String[] args) {
-        CuentaBancaria miCuenta = new CuentaBancaria(123);
-        CuentaBancaria miCuenta2 = miCuenta;
+        Banco banco = new Banco();
 
-        miCuenta.numero = 345;
+        CuentaBancaria miCuenta = new CuentaBancaria(123);
+        CuentaBancaria miCuenta2 = new CuentaBancaria(345);
 
         System.out.println(miCuenta);
-        System.out.println(miCuenta.numero);
-        System.out.println(miCuenta2.numero);
+        System.out.println(miCuenta.getNumero());
+        System.out.println(miCuenta2.getNumero());
     }
 }

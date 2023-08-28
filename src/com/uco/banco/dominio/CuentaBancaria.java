@@ -1,11 +1,11 @@
 package com.uco.banco.dominio;
 
 public class CuentaBancaria {
-    public int numero;
-    public long saldo;
-    public boolean activa;
-    public Banco banco;
-    public Persona propietario;
+    private int numero;
+    private long saldo;
+    private boolean activa;
+    private Banco banco;
+    private Persona propietario;
 
     public CuentaBancaria(int numero) {
         this.numero = numero;
@@ -58,5 +58,29 @@ public class CuentaBancaria {
     public String consultarSaldo() {
         String mensajeSaldo = "Tu saldo es " + saldo;
         return mensajeSaldo;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public long getSaldo() {
+        return saldo;
+    }
+
+    public boolean isActiva() {
+        return activa;
+    }
+
+    public Banco getBanco() {
+        return banco;
+    }
+
+    public Persona getPropietario() {
+        return propietario;
+    }
+
+    public void setActiva(boolean activa) {
+        this.activa = activa;
     }
 }
