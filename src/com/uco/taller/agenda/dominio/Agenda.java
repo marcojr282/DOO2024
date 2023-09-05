@@ -1,9 +1,11 @@
 package com.uco.taller.agenda.dominio;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Agenda {
+    public static final int CAPACIDAD_AGENDA = 50;
     private List<Contacto> contactos;
 
     public Agenda() {
@@ -11,9 +13,9 @@ public class Agenda {
     }
 
     public void crearContacto(String nombre, String apellido, long celular) {
-        Contacto c = this.buscarPorCelular(celular);
+        Contacto c = this.buscar(celular);
 
-        if (this.contactos.size() < 50 && c == null) {
+        if (this.contactos.size() < CAPACIDAD_AGENDA && c == null) {
             Contacto contactoAAgregar = new Contacto(nombre, apellido, celular);
             this.contactos.add(contactoAAgregar);
         } else {
@@ -22,7 +24,7 @@ public class Agenda {
     }
 
     public boolean eliminarContacto(long celularAEliminar) {
-        Contacto contactoExistente = this.buscarPorCelular(celularAEliminar);
+        Contacto contactoExistente = this.buscar(celularAEliminar);
 
         if (contactoExistente != null) {
             this.contactos.remove(contactoExistente);
@@ -32,7 +34,7 @@ public class Agenda {
         return false;
     }
 
-    public List<Contacto> buscarPorNombre(String nombreABuscar) {
+    public List<Contacto> buscar(String nombreABuscar) {
         return this.contactos.stream()
                 .filter(contact -> contact.getNombre().equalsIgnoreCase(nombreABuscar))
                 .toList();
@@ -50,14 +52,14 @@ public class Agenda {
         return contactosPorApellido;
     }
 
-    public Contacto buscarPorCelular(long celularABuscar) {
+    public Contacto buscar(long celularABuscar) {
         return this.contactos.stream()
                 .filter(contacto -> contacto.getCelular() == celularABuscar)
                 .findFirst().orElse(null);
     }
 
     public void cambiarCelular(long celularActual, long nuevoCelular) {
-        Contacto contactoExistente = this.buscarPorCelular(celularActual);
+        Contacto contactoExistente = this.buscar(celularActual);
 
         if (contactoExistente != null) {
             contactoExistente.celular = nuevoCelular;
@@ -65,6 +67,10 @@ public class Agenda {
     }
 
     public List<Contacto> ordenarAlfabeticamente() {
-        return null;
+        this.contactos.sort(
+                Comparator.comparing(Contacto::getNombre)
+                .thenComparing(Contacto::getApellido)
+        );
+        return this.contactos;
     }
 }
