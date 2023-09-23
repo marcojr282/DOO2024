@@ -1,7 +1,6 @@
 package com.uco.joptionpane.app;
 
 import com.uco.joptionpane.dominio.Calculadora;
-
 import javax.swing.*;
 import java.util.Arrays;
 
@@ -17,8 +16,8 @@ public class CalculadoraApp {
         while (true) {
             int opcionElegida = mostrarMenu();
 
-            int n1 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el primer número"));
-            int n2 = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el segundo número"));
+            int n1 = recibirNumero("Ingrese el primer número");
+            int n2 = recibirNumero("Ingrese el segundo número");
 
             switch (opcionElegida) {
                 case SUMAR -> mostrarMensaje("La suma es " + Calculadora.sumar(n1, n2));
@@ -33,33 +32,14 @@ public class CalculadoraApp {
                 }
             }
         }
-
     }
 
-//    public static void main(String[] args) {
-//        String nombre = pedirDato("Ingresa tu nombre");
-//
-//        int opcion = JOptionPane.showConfirmDialog(null, "Elige un botón", "POO", JOptionPane.OK_CANCEL_OPTION);
-//
-//        switch (opcion) {
-//            case JOptionPane.YES_OPTION -> mostrarMensaje("SELECCIONÓ SI");
-//            case JOptionPane.NO_OPTION -> mostrarMensaje("SELECCIONÓ NO");
-//            case JOptionPane.CANCEL_OPTION -> {
-//                mostrarMensaje("SELECCIONÓ CANCELAR");
-//            }
-//            case JOptionPane.CLOSED_OPTION -> mostrarMensaje("SELECCIONÓ CERRAR");
-//            default -> mostrarMensaje("QUE PUTAS SELECCIONÓ?");
-//        }
-//    }
+    public static void mostrarError(String mensaje) {
+        JOptionPane.showMessageDialog(null, mensaje, "Calculadora", JOptionPane.ERROR_MESSAGE);
+    }
 
     public static void mostrarMensaje(String mensaje) {
-        JOptionPane.showMessageDialog(null, mensaje, "POO 2023-02", JOptionPane.ERROR_MESSAGE);
-    }
-
-    public static String pedirDato(String mensaje) {
-        return (String) JOptionPane.showInputDialog(null, mensaje, "POO",
-                JOptionPane.QUESTION_MESSAGE, null, Arrays.asList("Alejandro", "Sofia", "Carlos").toArray(),
-                null);
+        JOptionPane.showMessageDialog(null, mensaje, "Calculadora", JOptionPane.INFORMATION_MESSAGE);
     }
 
     public static int mostrarMenu() {
@@ -72,5 +52,22 @@ public class CalculadoraApp {
         }
 
         return opcion;
+    }
+
+    public static int recibirNumero(String mensaje) {
+        int numeroARetornar = 0;
+        boolean numeroValido = false;
+
+        do {
+            try {
+                numeroARetornar = Integer.parseInt(JOptionPane.showInputDialog(mensaje));
+                numeroValido = true;
+            } catch (NumberFormatException e) {
+                mostrarError("El número no es válido. Ingreselo nuevamente.");
+                e.printStackTrace();
+            }
+        } while (!numeroValido);
+
+        return numeroARetornar;
     }
 }
