@@ -7,6 +7,11 @@ public class Vehiculo {
     protected int anioModelo;
     protected double velocidad;
 
+    public Vehiculo(String marca, String modelo) {
+        this.marca = marca;
+        this.modelo = modelo;
+    }
+
     public void acelerar(double cantidad) {
         this.velocidad += cantidad;
         System.out.println("Acelerando como vehiculo");

@@ -5,9 +5,13 @@ public class Taxi extends Carro {
     private int capacidad;
     private int pasajerosActuales;
 
+    public Taxi(String marca, String modelo, String empresa) {
+        super(marca, modelo);
+        this.empresa = empresa;
+    }
+
     @Override
     public void acelerar(double cantidad) {
-        super.acelerar(cantidad);
         System.out.println("Acelerando como Taxi 🚕");
     }
 
@@ -21,6 +25,15 @@ public class Taxi extends Carro {
         if (this.pasajerosActuales > 0) {
             this.pasajerosActuales--;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Taxi{" +
+                "empresa='" + empresa + '\'' +
+                ", marca='" + marca + '\'' +
+                ", modelo='" + modelo + '\'' +
+                '}';
     }
 
     public String getEmpresa() {
