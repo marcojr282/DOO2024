@@ -1,12 +1,6 @@
 package com.uco.geometria.dominio;
 
-public class FiguraGeometrica {
-
-    public double calcularArea() {
-        return 0;
-    }
-
-    public double calcularPerimetro() {
-        return 0;
-    }
+public abstract class FiguraGeometrica {
+    public abstract double calcularArea();
+    public abstract double calcularPerimetro();
 }

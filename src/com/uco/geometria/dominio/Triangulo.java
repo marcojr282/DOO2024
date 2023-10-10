@@ -1,4 +1,4 @@
 package com.uco.geometria.dominio;
 
-public class Triangulo {
+public abstract class Triangulo extends FiguraGeometrica {
 }

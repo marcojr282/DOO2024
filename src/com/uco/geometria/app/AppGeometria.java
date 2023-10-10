@@ -11,10 +11,12 @@ public class AppGeometria {
     public static void main(String[] args) {
         Circulo circulo = new Circulo(5);
         Cuadrilatero cuadrado = new Cuadrilatero(4, 4);
+        FiguraGeometrica figuraGeometrica = new Cuadrilatero(5, 8);
 
         List<FiguraGeometrica> figuras = new ArrayList<>();
         figuras.add(circulo);
         figuras.add(cuadrado);
+        figuras.add(figuraGeometrica);
 
         figuras.forEach(figura -> {
             System.out.println(figura);
