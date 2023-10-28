@@ -4,6 +4,10 @@ public class Circulo extends FiguraGeometrica {
     private int radio;
 
     public Circulo(int radio) {
+        if (radio <= 0) {
+            throw new ValorInvalidoException();
+        }
+
         this.radio = radio;
     }
 

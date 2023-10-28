@@ -9,8 +9,8 @@ import java.util.List;
 
 public class AppGeometria {
     public static void main(String[] args) {
-        Circulo circulo = new Circulo(5);
-        Cuadrilatero cuadrado = new Cuadrilatero(4, 4);
+        Circulo circulo = new Circulo(60);
+        Cuadrilatero cuadrado = new Cuadrilatero(4, 5);
         FiguraGeometrica figuraGeometrica = new Cuadrilatero(5, 8);
 
         List<FiguraGeometrica> figuras = new ArrayList<>();
